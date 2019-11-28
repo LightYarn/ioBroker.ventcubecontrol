@@ -27,7 +27,7 @@ systemDictionary =
 	
     
     "interval": {
-        "de": "Interval für Werte-Aktualisierung",
+        "de": "Intervall für Werte-Aktualisierung",
 		"en": "Interval for updating values"
     }
 	
