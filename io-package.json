@@ -1,0 +1,54 @@
+{
+    "common": {
+        "name": "ventcubecontrol",
+        "main" : "main.js",
+        "version": "0.1.5",
+        "title": "ventcubecontrol",
+        "titleLang": "VentCube Control",
+        "desc": {
+            "en": 		"VentCube Control",
+            "de": 		"VentCube Control",
+            "ru": 		"VentCube Control",
+            "pt": 		"VentCube Control",
+            "nl": 		"VentCube Control",
+            "fr": 		"VentCube Control",
+            "it": 		"VentCube Control",
+            "es": 		"VentCube Control",
+            "pl": 		"VentCube Control",
+            "zh-cn":	"VentCube Control"
+        },
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "loglevel": "info",
+        "icon": "smartCube.png",
+        "materialize": true,
+        "compact": true,
+        "enabled": true,
+        "extIcon": "",
+        "keywords": 
+		[
+            "VentCube",
+            "Schwoerer", "Schwörer"      
+        ],
+        "news": 
+		{
+            
+        },
+        "readme": "",
+        "type": "climate-control",
+        "license": "MIT",
+        "authors": [{
+            "name": "Jan W",
+            "email": ""
+        }]
+    },
+    "native": 
+	{
+		"ventCubeIP": "192.168.0.0",
+		"refreshRate": 5,
+		"doLog": false
+        
+    },
+    "objects": [],
+    "instanceObjects": []
+}
