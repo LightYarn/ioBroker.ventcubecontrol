@@ -1,5 +1,5 @@
 {
-  "name": "ventcubecontrol",
+  "name": "iobroker.ventcubecontrol",
   "version": "0.1.0",
   "description": "ventcubecontrol",
   "main": "main.js",
