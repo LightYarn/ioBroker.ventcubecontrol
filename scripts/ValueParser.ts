@@ -98,8 +98,10 @@ export class ValueParser
     }
 
     public parseTemp_Outside(_response: string): number
-    {    
-        return (this.hexToInt(_response.slice(-4)) / 10.0);     
+    {
+        let temp = (this.hexToInt(_response.slice(-4)) / 10.0);
+        this.ventcubecontrol.writeLog("New TEMP: " + temp);
+        return temp;    
     }
 
 

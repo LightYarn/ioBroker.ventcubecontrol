@@ -39,6 +39,9 @@ class Connector {
                 }
             }
         }
+        else {
+            this.ventcubecontrol.log.warn("Tried to GET VentCubeData but Commandmode is not in the corret state! Was: " + this.currentCommandMode);
+        }
     }
     setVentCubeData(_address, _value) {
         if (this.currentCommandMode == COMMANDMODES.NONE) {
@@ -55,6 +58,9 @@ class Connector {
                     this.socket.connect(this.port, this.ipAddress);
                 }
             }
+        }
+        else {
+            this.ventcubecontrol.log.warn("Tried to SET VentCubeData but Commandmode is not in the corret state! Was: " + this.currentCommandMode);
         }
     }
     prepareSocket() {
@@ -88,8 +94,10 @@ class Connector {
     }
     readData() {
         if (this.ventCubeData == null) {
+            this.ventcubecontrol.writeLog("Creating new ventCubeData object");
             this.ventCubeData = new VentCubeData_1.VentCubeData();
         }
+        this.ventcubecontrol.writeLog("reading Data! Index: " + this.currentReadDataIndex);
         switch (this.currentReadDataIndex) {
             case ValueDefinitions_1.ReadDataIndex.OperationgMode:
                 this.read(ValueDefinitions_1.RegisterAdresses.OperationgMode);
@@ -107,6 +115,7 @@ class Connector {
                 this.ventcubecontrol.writeLog("READ DONE");
                 this.ventcubecontrol.logVentCubeDataAdapter();
                 this.ventcubecontrol.setStates();
+                this.currentReadDataIndex = 0;
                 this.currentCommandMode = COMMANDMODES.NONE;
                 if (this.socket != null) {
                     this.socket.end();
@@ -245,6 +254,7 @@ class Connector {
             case ValueDefinitions_1.ReadDataIndex.DONE:
                 break;
             default:
+                this.ventcubecontrol.log.error("UNHANDELED RED DATA-INDEX! WAS: " + this.currentReadDataIndex);
                 throw new Error("UNHANDELED RED DATA-INDEX! WAS: " + this.currentReadDataIndex);
         }
         this.readData();

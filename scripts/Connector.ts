@@ -83,8 +83,12 @@ export class Connector
                 }
             }
 
-            
 
+
+        }
+        else
+        {
+            this.ventcubecontrol.log.warn("Tried to GET VentCubeData but Commandmode is not in the corret state! Was: " + this.currentCommandMode);
         }
     }
 
@@ -110,6 +114,10 @@ export class Connector
                     this.socket.connect(this.port, this.ipAddress);
                 }
             }
+        }
+        else
+        {
+            this.ventcubecontrol.log.warn("Tried to SET VentCubeData but Commandmode is not in the corret state! Was: " + this.currentCommandMode);
         }
     }
 
@@ -160,8 +168,11 @@ export class Connector
     {
         if (this.ventCubeData == null)
         {
+            this.ventcubecontrol.writeLog("Creating new ventCubeData object");
             this.ventCubeData = new VentCubeData();
         }
+
+        this.ventcubecontrol.writeLog("reading Data! Index: " + this.currentReadDataIndex);
 
         switch (this.currentReadDataIndex)
         {
@@ -193,6 +204,7 @@ export class Connector
                 this.ventcubecontrol.logVentCubeDataAdapter();
                 this.ventcubecontrol.setStates();
 
+                this.currentReadDataIndex = 0;
                 this.currentCommandMode = COMMANDMODES.NONE;
                 if (this.socket != null)
                 {
@@ -403,6 +415,7 @@ export class Connector
                 break;
 
             default:
+                this.ventcubecontrol.log.error("UNHANDELED RED DATA-INDEX! WAS: " + this.currentReadDataIndex);
                 throw new Error("UNHANDELED RED DATA-INDEX! WAS: " + this.currentReadDataIndex);
         }
 

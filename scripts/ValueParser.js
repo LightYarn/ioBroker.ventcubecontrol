@@ -64,7 +64,9 @@ class ValueParser {
         }
     }
     parseTemp_Outside(_response) {
-        return (this.hexToInt(_response.slice(-4)) / 10.0);
+        let temp = (this.hexToInt(_response.slice(-4)) / 10.0);
+        this.ventcubecontrol.writeLog("New TEMP: " + temp);
+        return temp;
     }
     hexToInt(_hex) {
         if (_hex.length % 2 != 0) {
