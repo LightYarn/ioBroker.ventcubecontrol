@@ -45,8 +45,7 @@
     "native": 
 	{
 		"ventCubeIP": "192.168.0.0",
-		"refreshRate": 5,
-		"doLog": false
+		"refreshRate": 5
         
     },
     "objects": [],
